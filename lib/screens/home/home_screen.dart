@@ -6,16 +6,25 @@ import 'package:fruit_tiedot/screens/fruitdetails/fruit_detail_screen.dart';
 import 'components/fruit_card.dart';
 import 'components/home_searchbar.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final _searchController = TextEditingController();
+
+  void _makeFavorite(Fruit fruit) {
+    setState(() => fruit.toggleFavorite());
+  }
+
   @override
   Widget build(BuildContext context) {
     // final size = MediaQuery.of(context).size;
     debugPrint(_searchController.text);
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -26,8 +35,8 @@ class HomeScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(kDefaultPadding),
           child: Column(
-            children: const [
-              FruitCardGridView(),
+            children: [
+              FruitCardGridView(toggleFavorite: _makeFavorite),
             ],
           ),
         ),
@@ -37,9 +46,9 @@ class HomeScreen extends StatelessWidget {
 }
 
 class FruitCardGridView extends StatelessWidget {
-  const FruitCardGridView({
-    super.key,
-  });
+  const FruitCardGridView({super.key, required this.toggleFavorite});
+
+  final void Function(Fruit) toggleFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -56,15 +65,16 @@ class FruitCardGridView extends StatelessWidget {
       ),
       itemCount: fruits.length,
       itemBuilder: ((context, index) => FruitCard(
-            fruit: fruits[index],
-            onPress: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => FruitDetailScreen(
-                  fruit: fruits[index],
-                ),
-              ),
+        fruit: fruits[index],
+        toggleFavorite: toggleFavorite,
+        onPress: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => FruitDetailScreen(
+              fruit: fruits[index],
             ),
-          )),
+          ),
+        ),
+      )),
     );
   }
 }

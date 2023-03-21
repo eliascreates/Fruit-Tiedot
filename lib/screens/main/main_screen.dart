@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fruit_tiedot/constants.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/screens/home/home_screen.dart';
 
 import '../favorite/favorite_screen.dart';

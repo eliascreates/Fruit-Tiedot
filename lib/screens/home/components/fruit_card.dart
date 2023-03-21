@@ -3,13 +3,23 @@ import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/models/fruits.dart';
 
 class FruitCard extends StatelessWidget {
-  const FruitCard({super.key, required this.fruit, required this.onPress});
+  const FruitCard({
+    super.key,
+    required this.fruit,
+    required this.onPress,
+    required this.toggleFavorite,
+  });
+
   final Fruit fruit;
   final VoidCallback onPress;
+  final void Function(Fruit) toggleFavorite;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onDoubleTap: () {
+        toggleFavorite(fruit);
+      },
       onTap: onPress,
       splashColor: kSecondaryColor,
       splashFactory: InkRipple.splashFactory,
@@ -37,15 +47,15 @@ class FruitCard extends StatelessWidget {
           Positioned(
             top: 10,
             right: 15,
-            child: (fruit.isFavorite)
-                ? const Icon(
-                    Icons.favorite_rounded,
-                    color: Colors.redAccent,
-                  )
-                : const Icon(
-                    Icons.favorite_outline_rounded,
-                    color: kBgColorDark,
-                  ),
+            child: InkWell(
+              onTap: () => toggleFavorite(fruit),
+              child: Icon(
+                (fruit.isFavorite)
+                    ? Icons.favorite_rounded
+                    : Icons.favorite_outline_rounded,
+                color: (fruit.isFavorite) ? Colors.redAccent : kBgColorDark,
+              ),
+            ),
           ),
           Positioned(
             bottom: 30,

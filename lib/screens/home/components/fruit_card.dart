@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/models/fruits.dart';
 
+import 'heart_button.dart';
+
 class FruitCard extends StatelessWidget {
   const FruitCard({
     super.key,
@@ -34,6 +36,13 @@ class FruitCard extends StatelessWidget {
             // height: 180,
             // width: 150,
             decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade300,
+                  spreadRadius: 1,
+                  blurRadius: 8,
+                ),
+              ],
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
             ),
@@ -47,15 +56,8 @@ class FruitCard extends StatelessWidget {
           Positioned(
             top: 10,
             right: 15,
-            child: InkWell(
-              onTap: () => toggleFavorite(fruit),
-              child: Icon(
-                (fruit.isFavorite)
-                    ? Icons.favorite_rounded
-                    : Icons.favorite_outline_rounded,
-                color: (fruit.isFavorite) ? Colors.redAccent : kBgColorDark,
-              ),
-            ),
+            child:
+                HeartButtonIcon(toggleFavorite: toggleFavorite, fruit: fruit),
           ),
           Positioned(
             bottom: 30,

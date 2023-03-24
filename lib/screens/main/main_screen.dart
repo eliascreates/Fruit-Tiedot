@@ -34,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
 }
 
 List<Widget> screens = [
-  HomeScreen(),
+  const HomeScreen(),
   const FavoriteScreen(),
   // const Center(
   //   child: Text("Notifications Screen"),

@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_tiedot/constants.dart';
 
-
 class HomeSearchBar extends StatelessWidget {
-  const HomeSearchBar({
-    super.key,
-    required TextEditingController searchController,
-  }) : _searchController = searchController;
+  const HomeSearchBar(
+      {super.key, required this.searchController, required this.searchForIt});
 
-  final TextEditingController _searchController;
+  final TextEditingController searchController;
 
+  final void Function(String) searchForIt;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -29,7 +27,8 @@ class HomeSearchBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: TextField(
-              controller: _searchController,
+              controller: searchController,
+              onChanged: searchForIt,
               decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.search_rounded),
                   hintText: "Search",

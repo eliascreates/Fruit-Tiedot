@@ -4,7 +4,9 @@ import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/models/fruits.dart';
 import 'package:fruit_tiedot/screens/fruitdetails/fruit_detail_screen.dart';
 import 'components/fruit_card.dart';
+import 'components/fruit_card_gridview.dart';
 import 'components/home_searchbar.dart';
+import 'components/tabbar_categories.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,68 +15,118 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final _searchController = TextEditingController();
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 6, vsync: this, initialIndex: 0);
+    _tabController.addListener(_handleTabSelection);
+    super.initState();
+  }
+
+  _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      setState(() {});
+    }
+  }
 
   void _makeFavorite(Fruit fruit) {
     setState(() => fruit.toggleFavorite());
   }
 
+  void _resetTabBar(_) {
+    setState(() {
+      _searchController.clear();
+      searchFruits = fruits;
+    });
+  }
+
+  void _refreshData() {
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  List<dynamic> searchFruits = fruits;
+
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
-    debugPrint(_searchController.text);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: HomeSearchBar(searchController: _searchController),
-      ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.all(kDefaultPadding),
-          child: Column(
-            children: [
-              FruitCardGridView(toggleFavorite: _makeFavorite),
-            ],
-          ),
+        title: HomeSearchBar(
+          searchController: _searchController,
+          searchForIt: (text) {
+            searchFruits = fruits
+                .where((fruit) =>
+                    fruit.name.toLowerCase().contains(text.toLowerCase()))
+                .toList();
+            _refreshData();
+            debugPrint("searched: ${searchFruits.length}");
+          },
         ),
       ),
-    );
-  }
-}
-
-class FruitCardGridView extends StatelessWidget {
-  const FruitCardGridView({super.key, required this.toggleFavorite});
-
-  final void Function(Fruit) toggleFavorite;
-
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: (size.width >= 600) ? 4 : 2,
-        childAspectRatio: 1,
-        mainAxisExtent: 200,
-        crossAxisSpacing: kDefaultPadding * 0.75,
-        mainAxisSpacing: kDefaultPadding,
-      ),
-      itemCount: fruits.length,
-      itemBuilder: ((context, index) => FruitCard(
-        fruit: fruits[index],
-        toggleFavorite: toggleFavorite,
-        onPress: () => Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => FruitDetailScreen(
-              fruit: fruits[index],
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(kDefaultPadding),
+            child: Column(
+              children: [
+                TabBarCategories(
+                  tabController: _tabController,
+                  onPress: _resetTabBar,
+                ),
+                const SizedBox(height: kDefaultPadding),
+                [
+                  FruitCardGridView(
+                      toggleFavorite: _makeFavorite,
+                      refreshData: _refreshData,
+                      fruitsFiltered: searchFruits),
+                  FruitCardGridView(
+                      toggleFavorite: _makeFavorite,
+                      refreshData: _refreshData,
+                      fruitsFiltered: searchFruits
+                          .where((fruit) => fruit.type == Fruittype.citrus)
+                          .toList()),
+                  FruitCardGridView(
+                      toggleFavorite: _makeFavorite,
+                      refreshData: _refreshData,
+                      fruitsFiltered: searchFruits
+                          .where((fruit) => fruit.type == Fruittype.tropical)
+                          .toList()),
+                  FruitCardGridView(
+                      toggleFavorite: _makeFavorite,
+                      refreshData: _refreshData,
+                      fruitsFiltered: searchFruits
+                          .where((fruit) => fruit.type == Fruittype.berry)
+                          .toList()),
+                  FruitCardGridView(
+                      toggleFavorite: _makeFavorite,
+                      refreshData: _refreshData,
+                      fruitsFiltered: searchFruits
+                          .where((fruit) => fruit.type == Fruittype.melon)
+                          .toList()),
+                  FruitCardGridView(
+                      toggleFavorite: _makeFavorite,
+                      refreshData: _refreshData,
+                      fruitsFiltered: searchFruits
+                          .where((fruit) => fruit.type == Fruittype.other)
+                          .toList()),
+                ][_tabController.index],
+              ],
             ),
           ),
-        ),
-      )),
+        ],
+      ),
     );
   }
 }

@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Fruits Tiedot App",
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.grey[200],
+        scaffoldBackgroundColor: Colors.grey[100],
         primaryColor: kSecondaryColor,
         primarySwatch: Colors.amber,
         iconTheme: const IconThemeData(color: kBgColorDark),

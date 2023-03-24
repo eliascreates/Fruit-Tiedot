@@ -17,8 +17,13 @@ class SvgIcon {
   static String profile = "assets/icons/profile.svg";
 }
 
-
-
+enum categories {
+  all,
+  citrus,
+  
+}
+//*Sources
+//https://www.nutritionadvance.com/healthy-foods/types-of-fruit/
 //<a href="https://iconscout.com/icons/orange" target="_blank">Orange Icon</a> on <a href="https://iconscout.com">IconScout</a>
 //<a href="https://iconscout.com/icons/cherry" target="_blank">Cherry Icon</a> by <a href="https://iconscout.com/contributors/aomam">Aomam .</a> on <a href="https://iconscout.com">IconScout</a>
 // /<a href="https://iconscout.com/icons/orange" target="_blank">Orange Icon</a> on <a href="https://iconscout.com">IconScout</a>

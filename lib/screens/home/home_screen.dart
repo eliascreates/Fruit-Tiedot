@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/models/fruits.dart';
-import 'package:fruit_tiedot/screens/fruitdetails/fruit_detail_screen.dart';
-import 'components/fruit_card.dart';
+// import 'package:fruit_tiedot/screens/fruitdetails/fruit_detail_screen.dart';
+// import 'components/fruit_card.dart';
 import 'components/fruit_card_gridview.dart';
 import 'components/home_searchbar.dart';
 import 'components/tabbar_categories.dart';
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   void _resetTabBar(_) {
     setState(() {
       _searchController.clear();
-      searchFruits = fruits;
+      _searchFruits = fruits;
     });
   }
 
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  List<dynamic> searchFruits = fruits;
+  List<dynamic> _searchFruits = fruits;
 
   @override
   Widget build(BuildContext context) {
@@ -65,67 +65,36 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         title: HomeSearchBar(
           searchController: _searchController,
           searchForIt: (text) {
-            searchFruits = fruits
+            _searchFruits = fruits
                 .where((fruit) =>
                     fruit.name.toLowerCase().contains(text.toLowerCase()))
                 .toList();
             _refreshData();
-            debugPrint("searched: ${searchFruits.length}");
+            debugPrint("searched: ${_searchFruits.length}");
           },
         ),
       ),
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(kDefaultPadding),
-            child: Column(
-              children: [
-                TabBarCategories(
-                  tabController: _tabController,
-                  onPress: _resetTabBar,
-                ),
-                const SizedBox(height: kDefaultPadding),
-                [
-                  FruitCardGridView(
-                      toggleFavorite: _makeFavorite,
-                      refreshData: _refreshData,
-                      fruitsFiltered: searchFruits),
-                  FruitCardGridView(
-                      toggleFavorite: _makeFavorite,
-                      refreshData: _refreshData,
-                      fruitsFiltered: searchFruits
-                          .where((fruit) => fruit.type == Fruittype.citrus)
-                          .toList()),
-                  FruitCardGridView(
-                      toggleFavorite: _makeFavorite,
-                      refreshData: _refreshData,
-                      fruitsFiltered: searchFruits
-                          .where((fruit) => fruit.type == Fruittype.tropical)
-                          .toList()),
-                  FruitCardGridView(
-                      toggleFavorite: _makeFavorite,
-                      refreshData: _refreshData,
-                      fruitsFiltered: searchFruits
-                          .where((fruit) => fruit.type == Fruittype.berry)
-                          .toList()),
-                  FruitCardGridView(
-                      toggleFavorite: _makeFavorite,
-                      refreshData: _refreshData,
-                      fruitsFiltered: searchFruits
-                          .where((fruit) => fruit.type == Fruittype.melon)
-                          .toList()),
-                  FruitCardGridView(
-                      toggleFavorite: _makeFavorite,
-                      refreshData: _refreshData,
-                      fruitsFiltered: searchFruits
-                          .where((fruit) => fruit.type == Fruittype.other)
-                          .toList()),
-                ][_tabController.index],
-              ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
+        child: Column(
+          children: [
+            const SizedBox(height: kDefaultPadding),
+            
+            //Tabbar Header and Tabbar Body
+            TabBarCategories(
+              tabController: _tabController,
+              onPress: _resetTabBar,
             ),
-          ),
-        ],
+            Expanded(
+              child: TabBarCategoryView(
+                tabController: _tabController,
+                searchFruits: _searchFruits,
+                makeFavorite: _makeFavorite,
+                refreshData: _refreshData,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

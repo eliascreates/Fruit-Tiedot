@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/models/fruits.dart';
 
-import '../../fruitdetails/fruit_detail_screen.dart';
+import '../../fruit_details/fruit_detail_screen.dart';
 import 'fruit_card.dart';
-
-
 
 class FruitCardGridView extends StatelessWidget {
   const FruitCardGridView(
@@ -23,7 +21,7 @@ class FruitCardGridView extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return GridView.builder(
       shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: (size.width >= 600) ? 4 : 2,
         childAspectRatio: 1,
@@ -31,6 +29,11 @@ class FruitCardGridView extends StatelessWidget {
         crossAxisSpacing: kDefaultPadding * 0.75,
         mainAxisSpacing: kDefaultPadding,
       ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: kDefaultPadding / 2,
+        vertical: kDefaultPadding,
+      ),
+      scrollDirection: Axis.vertical,
       itemCount: fruitsFiltered.length,
       itemBuilder: ((context, index) => FruitCard(
             fruit: fruitsFiltered[index],

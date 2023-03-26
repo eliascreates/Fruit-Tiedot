@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
+import 'package:fruit_tiedot/models/fruits.dart';
 
+import 'fruit_card_gridview.dart';
 
 class TabBarCategories extends StatelessWidget {
   const TabBarCategories({
@@ -32,6 +34,64 @@ class TabBarCategories extends StatelessWidget {
         Tab(text: "Berries"),
         Tab(text: "Melons"),
         Tab(text: "Other"),
+      ],
+    );
+  }
+}
+
+class TabBarCategoryView extends StatelessWidget {
+  const TabBarCategoryView({
+    super.key,
+    required this.tabController,
+    required this.searchFruits,
+    required this.makeFavorite,
+    required this.refreshData,
+  });
+
+  final TabController tabController;
+  final List searchFruits;
+  final void Function(Fruit) makeFavorite;
+  final void Function() refreshData;
+
+  @override
+  Widget build(BuildContext context) {
+    return TabBarView(
+      controller: tabController,
+      children: [
+        FruitCardGridView(
+            toggleFavorite: makeFavorite,
+            refreshData: refreshData,
+            fruitsFiltered: searchFruits),
+        FruitCardGridView(
+            toggleFavorite: makeFavorite,
+            refreshData: refreshData,
+            fruitsFiltered: searchFruits
+                .where((fruit) => fruit.type == Fruittype.citrus)
+                .toList()),
+        FruitCardGridView(
+            toggleFavorite: makeFavorite,
+            refreshData: refreshData,
+            fruitsFiltered: searchFruits
+                .where((fruit) => fruit.type == Fruittype.tropical)
+                .toList()),
+        FruitCardGridView(
+            toggleFavorite: makeFavorite,
+            refreshData: refreshData,
+            fruitsFiltered: searchFruits
+                .where((fruit) => fruit.type == Fruittype.berry)
+                .toList()),
+        FruitCardGridView(
+            toggleFavorite: makeFavorite,
+            refreshData: refreshData,
+            fruitsFiltered: searchFruits
+                .where((fruit) => fruit.type == Fruittype.melon)
+                .toList()),
+        FruitCardGridView(
+            toggleFavorite: makeFavorite,
+            refreshData: refreshData,
+            fruitsFiltered: searchFruits
+                .where((fruit) => fruit.type == Fruittype.other)
+                .toList()),
       ],
     );
   }

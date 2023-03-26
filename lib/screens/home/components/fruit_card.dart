@@ -60,7 +60,7 @@ class FruitCard extends StatelessWidget {
                 HeartButtonIcon(toggleFavorite: toggleFavorite, fruit: fruit),
           ),
           Positioned(
-            bottom: 30,
+            bottom: 35,
             left: 20,
             child: Text(
               fruit.name,
@@ -72,8 +72,9 @@ class FruitCard extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Positioned(
-            bottom: 10,
+            bottom: 15,
             left: 20,
+            right: 15,
             child: Text(
               fruit.description,
               maxLines: 1,

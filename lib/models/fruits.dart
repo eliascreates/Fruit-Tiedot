@@ -8,12 +8,10 @@ class Fruit {
     required this.type,
     required this.imageSrc,
     required this.detailImageSrc,
-    required this.calories,
     this.isFavorite = false,
   });
 
   final String name, imageSrc, detailImageSrc, description;
-  final int calories;
   final Fruittype type;
   final Map<String, String> benefits;
   bool isFavorite;
@@ -45,8 +43,7 @@ List fruits = [
     type: Fruittype.citrus,
     imageSrc: "assets/images/orangeIcon.jpeg",
     detailImageSrc: "assets/images/orangePhoto.jpeg",
-    calories: 45,
-    isFavorite: true,
+    isFavorite: false,
   ),
   Fruit(
     name: "Apple",
@@ -61,7 +58,6 @@ List fruits = [
     type: Fruittype.other,
     imageSrc: "assets/images/appleIcon.jpeg",
     detailImageSrc: "assets/images/applePhoto.png",
-    calories: 45,
     isFavorite: false,
   ),
   Fruit(
@@ -77,7 +73,6 @@ List fruits = [
     type: Fruittype.citrus,
     imageSrc: "assets/images/limeIcon.jpeg",
     detailImageSrc: "assets/images/limePhoto.jpeg",
-    calories: 45,
     isFavorite: false,
   ),
   Fruit(
@@ -93,8 +88,7 @@ List fruits = [
     type: Fruittype.other,
     imageSrc: "assets/images/strawberryIcon.jpeg",
     detailImageSrc: "assets/images/strawberryPhoto.png",
-    calories: 45,
-    isFavorite: true,
+    isFavorite: false,
   ),
   Fruit(
     name: "Banana",
@@ -109,8 +103,7 @@ List fruits = [
     type: Fruittype.tropical,
     imageSrc: "assets/images/bananaIcon.jpeg",
     detailImageSrc: "assets/images/bananaPhoto.jpeg",
-    calories: 45,
-    isFavorite: true,
+    isFavorite: false,
   ),
   Fruit(
     name: "Raspberry",
@@ -125,7 +118,6 @@ List fruits = [
     type: Fruittype.berry,
     imageSrc: "assets/images/raspberryIcon.jpeg",
     detailImageSrc: "assets/images/raspberryPhoto.jpeg",
-    calories: 45,
     isFavorite: false,
   ),
   Fruit(
@@ -141,7 +133,6 @@ List fruits = [
     type: Fruittype.melon,
     imageSrc: "assets/images/watermelonIcon.jpeg",
     detailImageSrc: "assets/images/watermelonPhoto.jpeg",
-    calories: 45,
     isFavorite: false,
   ),
   Fruit(
@@ -157,10 +148,32 @@ List fruits = [
     type: Fruittype.citrus,
     imageSrc: "assets/images/lemonIcon.jpeg",
     detailImageSrc: "assets/images/lemonPhoto.jpeg",
-    calories: 45,
+    isFavorite: false,
+  ),
+  Fruit(
+    name: "Mango",
+    description:
+        "Sometimes referred to as the “king of fruits”, mangoes are a tropical fruit with extremely sweet and juicy flesh. They are native to South Asia, and they're a common fruit in countries such as India, the Philippines, and Thailand",
+    benefits: {
+      "Calories": "107 kcal",
+      "Sugar": "24.4 g",
+      "Vitamin C": "76%",
+      "Vitamin A": "25%",
+      "Vitamin B6": "11%",
+    },
+    type: Fruittype.citrus,
+    imageSrc: "assets/images/mangoIcon.jpeg",
+    detailImageSrc: "assets/images/mangoPhoto.jpeg",
     isFavorite: false,
   ),
 ];
+
+
+// "Calories": "107 kcal",
+// "Sugar": "24.4 g",
+// "Vitamin C": "76%",
+// "Vitamin A": "25%",
+// "Vitamin B6": "11%",
 
 
 //*RDA

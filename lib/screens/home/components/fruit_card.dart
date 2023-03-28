@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/models/fruits.dart';
 
-import 'heart_button.dart';
+import '../../components/heart_button.dart';
 
 class FruitCard extends StatelessWidget {
   const FruitCard({

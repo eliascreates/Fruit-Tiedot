@@ -4,128 +4,76 @@ import 'package:fruit_tiedot/models/fruits.dart';
 // import 'package:fruit_tiedot/screens/home/components/heart_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../fruit_details/fruit_detail_screen.dart';
+import 'components/favorite_fruit_item.dart';
+
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Size _size = MediaQuery.of(context).size;
     List<dynamic> favoriteFruits =
         fruits.where((fruit) => fruit.isFavorite).toList();
     return Scaffold(
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   elevation: 0,
+      //   toolbarHeight: 40,
+      //   backgroundColor: Colors.transparent,
+      //   title: Text(
+      //     "Favorite Fruits",
+      //     style: GoogleFonts.quicksand(
+      //       fontSize: 20,
+      //       fontWeight: FontWeight.w400,
+      //     ),
+      //   ),
+      // ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(
-              left: kDefaultPadding / 2,
-              top: kDefaultPadding,
-              right: kDefaultPadding / 2),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: kDefaultPadding / 2),
-                child: Text(
-                  "Favorite Fruits",
-                  style: GoogleFonts.duruSans(
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-              const SizedBox(height: kDefaultPadding / 2),
-              Expanded(
-                child: ListView(
-                  physics: const BouncingScrollPhysics(),
+              left: kDefaultPadding / 2, right: kDefaultPadding / 2),
+          child: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                centerTitle: true,
+                elevation: 0,
+                backgroundColor: Colors.transparent,
+                expandedHeight: 80,
+                toolbarHeight: 80,
+                pinned: false,
+                title: Column(
                   children: [
-                    const SizedBox(height: kDefaultPadding),
-                    ...favoriteFruits
-                        .map((fruit) =>
-                            FavoriteFruitItem(fruit: fruit, press: () {}))
-                        .toList(),
+                    Text(
+                      "Favorite Fruits",
+                      style: GoogleFonts.quicksand(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      "${favoriteFruits.length}/${fruits.length}",
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
                   ],
                 ),
               ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class FavoriteFruitItem extends StatelessWidget {
-  const FavoriteFruitItem({
-    super.key,
-    required this.fruit,
-    required this.press,
-  });
-  final Fruit fruit;
-  final VoidCallback press;
-
-  @override
-  Widget build(BuildContext context) {
-    // Size _size = MediaQuery.of(context).size;
-
-    return Padding(
-      padding: const EdgeInsets.only(
-        bottom: kDefaultPadding,
-        left: kDefaultPadding / 2,
-        right: kDefaultPadding / 2,
-      ),
-      child: InkWell(
-        splashColor: kSecondaryColor,
-        splashFactory: InkRipple.splashFactory,
-        borderRadius: BorderRadius.circular(20),
-        onTap: press,
-        child: Container(
-          padding: const EdgeInsets.all(kDefaultPadding / 2),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(kDefaultPadding / 2),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.shade400,
-                spreadRadius: 1,
-                blurRadius: 4,
-                blurStyle: BlurStyle.outer,
-              )
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(kDefaultPadding / 2),
-                    child: Image.asset(
-                      fruit.imageSrc,
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  const SizedBox(width: kDefaultPadding),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        fruit.name,
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                      SizedBox(
-                        width: 200,
-                        child: Text(
-                          fruit.description,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          textWidthBasis: TextWidthBasis.parent,
-                          style: Theme.of(context).textTheme.bodySmall,
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  childCount: favoriteFruits.length,
+                  (context, index) => FavoriteFruitItem(
+                    fruit: favoriteFruits[index],
+                    press: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              FruitDetailScreen(fruit: favoriteFruits[index]),
                         ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
-                ],
+                ),
               ),
-              const Icon(Icons.chevron_right_rounded)
             ],
           ),
         ),

@@ -27,7 +27,7 @@ class FruitCardGridView extends StatelessWidget {
         childAspectRatio: 1,
         mainAxisExtent: 200,
         crossAxisSpacing: kDefaultPadding * 0.75,
-        mainAxisSpacing: kDefaultPadding,
+        mainAxisSpacing: kDefaultPadding * 0.75,
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: kDefaultPadding / 2,

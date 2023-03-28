@@ -1,4 +1,4 @@
-import 'package:fruit_tiedot/constants.dart';
+import 'dart:core';
 
 class Fruit {
   Fruit({
@@ -19,6 +19,10 @@ class Fruit {
   void toggleFavorite() {
     isFavorite = !isFavorite;
   }
+
+  String get typeName {
+    return type.name[0].toUpperCase() + type.name.substring(1);
+  }
 }
 
 enum Fruittype {
@@ -32,7 +36,8 @@ enum Fruittype {
 List fruits = [
   Fruit(
     name: "Orange",
-    description: "Orange is a fruit",
+    description:
+        "Oranges are among the most common fruit in the world, and they provide a decent amount of vitamin C.",
     benefits: {
       "Calories": "86.5 kcal",
       "Sugar": "17.2g",
@@ -153,7 +158,7 @@ List fruits = [
   Fruit(
     name: "Mango",
     description:
-        "Sometimes referred to as the “king of fruits”, mangoes are a tropical fruit with extremely sweet and juicy flesh. They are native to South Asia, and they're a common fruit in countries such as India, the Philippines, and Thailand",
+        "Sometimes referred to as the “king of fruits”, mangoes are a tropical fruit with extremely sweet and juicy flesh.\n\nThey are native to South Asia, and they're a common fruit in countries such as India, the Philippines, and Thailand",
     benefits: {
       "Calories": "107 kcal",
       "Sugar": "24.4 g",
@@ -161,9 +166,25 @@ List fruits = [
       "Vitamin A": "25%",
       "Vitamin B6": "11%",
     },
-    type: Fruittype.citrus,
+    type: Fruittype.tropical,
     imageSrc: "assets/images/mangoIcon.jpeg",
     detailImageSrc: "assets/images/mangoPhoto.jpeg",
+    isFavorite: false,
+  ),
+  Fruit(
+    name: "Grapes",
+    description:
+        "Grapes are one of the most prevalent types of fruit, and we can find them almost everywhere, and they form the basis of many different wines, juices, jams, and dessert products.\n\nGrapes are also one of the highest-sugar fruits.",
+    benefits: {
+      "Calories": "69 kcal",
+      "Sugar": "15.5g",
+      "Vitamin C": "18%",
+      "Vitamin K": "18%",
+      "Vitamin B1": "5%",
+    },
+    type: Fruittype.berry,
+    imageSrc: "assets/images/grapesIcon.jpeg",
+    detailImageSrc: "assets/images/grapesPhoto.jpeg",
     isFavorite: false,
   ),
 ];

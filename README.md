@@ -1,6 +1,7 @@
-# fruit_tiedot
+# fruit_tiedot🍊
 
-A new Flutter project.
+A new Flutter project. This is a fruit app containing trivial information about fruits.
+Learn more about what you eat and take advantage of how they can assist you. Try new fruits ;-).
 
 ## Getting Started
 

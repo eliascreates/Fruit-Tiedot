@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 import 'package:fruit_tiedot/constants.dart';
-import 'package:fruit_tiedot/models/fruits.dart';
+import 'package:fruit_tiedot/models/fruit.dart';
 
 import '../components/heart_button.dart';
 import 'components/fruit_stats.dart';
@@ -21,7 +21,10 @@ class _FruitDetailScreenState extends State<FruitDetailScreen> {
   @override
   void initState() {
     images = fruits.map((e) {
-      return Image.asset(e.detailImageSrc);
+      return Image.asset(
+        e.detailImageSrc,
+        fit: BoxFit.cover,
+      );
     });
     super.initState();
   }
@@ -45,13 +48,18 @@ class _FruitDetailScreenState extends State<FruitDetailScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title:  Text( (widget.fruit.type != Fruittype.other) ? "${widget.fruit.typeName} Fruit": "Fruit Details"),
+        title: Text((widget.fruit.type != Fruittype.other)
+            ? "${widget.fruit.typeName} Fruit"
+            : "Fruit Details"),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: kDefaultPadding, vertical: kDefaultPadding / 2),
+          padding: const EdgeInsets.only(
+              left: kDefaultPadding,
+              right: kDefaultPadding,
+              top: kDefaultPadding / 2,
+              bottom: kDefaultPadding * 2),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
-import 'package:fruit_tiedot/models/fruits.dart';
+import 'package:fruit_tiedot/models/fruit.dart';
 // import 'package:fruit_tiedot/screens/home/components/heart_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -30,52 +30,79 @@ class FavoriteScreen extends StatelessWidget {
       //   ),
       // ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(
-              left: kDefaultPadding / 2, right: kDefaultPadding / 2),
-          child: CustomScrollView(
-            slivers: [
-              SliverAppBar(
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              // elevation: 0,
+              backgroundColor: kSecondaryColor,
+              expandedHeight: 200,
+              toolbarHeight: 100,
+              // floating: true,
+              snap: false,
+              flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-                expandedHeight: 80,
-                toolbarHeight: 80,
-                pinned: false,
-                title: Column(
-                  children: [
-                    Text(
-                      "Favorite Fruits",
-                      style: GoogleFonts.quicksand(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Text(
-                      "${favoriteFruits.length}/${fruits.length}",
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                  ],
-                ),
-              ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  childCount: favoriteFruits.length,
-                  (context, index) => FavoriteFruitItem(
-                    fruit: favoriteFruits[index],
-                    press: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              FruitDetailScreen(fruit: favoriteFruits[index]),
+                title: Container(
+                  color: Colors.white,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Favorite Fruits",
+                        textScaleFactor: 1,
+                        style: GoogleFonts.quicksand(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
                         ),
-                      );
-                    },
+                      ),
+                      Text("${favoriteFruits.length}/${fruits.length}",
+                          textScaleFactor: 1,
+                          style: Theme.of(context).textTheme.labelMedium),
+                    ],
                   ),
                 ),
+                background: Image.asset(
+                  "assets/images/fruitBackground.jpeg",
+                  fit: BoxFit.cover,
+                ),
               ),
-            ],
-          ),
+            ),
+            favoriteFruits.isNotEmpty
+                ? SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: favoriteFruits.length,
+                      (context, index) => Padding(
+                        padding: EdgeInsets.only(
+                            top: (index == 0) ? kDefaultPadding : 0,
+                            bottom: kDefaultPadding,
+                            left: kDefaultPadding,
+                            right: kDefaultPadding),
+                        child: FavoriteFruitItem(
+                          fruit: favoriteFruits[index],
+                          press: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => FruitDetailScreen(
+                                    fruit: favoriteFruits[index]),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  )
+                : SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: 1,
+                      (context, index) => SizedBox(
+                          height: _size.height / 2,
+                          child: Center(
+                              child: Text(
+                            "No favorite fruits",
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ))),
+                    ),
+                  ),
+          ],
         ),
       ),
     );

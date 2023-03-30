@@ -33,7 +33,7 @@ enum Fruittype {
   other,
 }
 
-List fruits = [
+List<Fruit> fruits = [
   Fruit(
     name: "Orange",
     description:
@@ -46,7 +46,7 @@ List fruits = [
       "Vitamin A": "8%",
     },
     type: Fruittype.citrus,
-    imageSrc: "assets/images/orangeIcon.jpeg",
+    imageSrc: "assets/images/orangeIcon.png",
     detailImageSrc: "assets/images/orangePhoto.jpeg",
     isFavorite: false,
   ),
@@ -82,7 +82,8 @@ List fruits = [
   ),
   Fruit(
     name: "Strawberry",
-    description: "Strawberry is a fruit",
+    description:
+        "This is one of the most common (and beloved) fruits in the world. Strawberries are thought to be berries, but this is not botanically true, and they are an accessory fruit.\n\nCommonly eaten fresh, with cream, or in a range of desserts, strawberries are a soft and sweet-tasting fruit",
     benefits: {
       "Calories": "48.6 kcal",
       "Sugar": "7.4g",
@@ -97,7 +98,8 @@ List fruits = [
   ),
   Fruit(
     name: "Banana",
-    description: "Banana is a fruit",
+    description:
+        "This is a tropical fruit with a long body covered in a yellow skin. It's a very common fruit, and due to their accessibility and inexpensive price, bananas are one of the most popular types of fruit in the world.\n\nSince bananas have a very sweet taste, dessert recipes often use them.",
     benefits: {
       "Calories": "105 kcal",
       "Sugar": "14.4g",
@@ -106,13 +108,14 @@ List fruits = [
       "Potassium": "12%"
     },
     type: Fruittype.tropical,
-    imageSrc: "assets/images/bananaIcon.jpeg",
+    imageSrc: "assets/images/bananaIcon.png",
     detailImageSrc: "assets/images/bananaPhoto.jpeg",
     isFavorite: false,
   ),
   Fruit(
     name: "Raspberry",
-    description: "Raspberry is a fruit",
+    description:
+        "Raspberries are one of the most commonly cultivated fruits in the world and they grow in temperate regions.\n\nThe raspberry has a soft flesh with a slightly sweet and juicy taste.",
     benefits: {
       "Calories": "64 kcal",
       "Sugar": "5.4g",
@@ -127,7 +130,8 @@ List fruits = [
   ),
   Fruit(
     name: "Watermelon",
-    description: "watermelon is a fruit",
+    description:
+        "The origin of watermelons is Southern Africa, and it is a large fruit that grows in tropical and subtropical regions. Watermelons taste sweet and juicy, and have a high 91.5% water content",
     benefits: {
       "Calories": " 46.2 kcal",
       "Sugar": "9.5g",
@@ -142,7 +146,8 @@ List fruits = [
   ),
   Fruit(
     name: "Lemon",
-    description: "Lemon is a fruit",
+    description:
+        "Lemon is a yellow citrus fruit native to Asia. Lemons house a tart soft flesh behind a thick yellow skin, and they are a famous culinary fruit. For one thing, thousands of recipes call for a squeeze of fresh lemon juice.",
     benefits: {
       "Calories": "25.8 kcal",
       "Sugar": "1.5g",
@@ -172,7 +177,7 @@ List fruits = [
     isFavorite: false,
   ),
   Fruit(
-    name: "Grapes",
+    name: "Grape",
     description:
         "Grapes are one of the most prevalent types of fruit, and we can find them almost everywhere, and they form the basis of many different wines, juices, jams, and dessert products.\n\nGrapes are also one of the highest-sugar fruits.",
     benefits: {
@@ -183,12 +188,93 @@ List fruits = [
       "Vitamin B1": "5%",
     },
     type: Fruittype.berry,
-    imageSrc: "assets/images/grapesIcon.jpeg",
-    detailImageSrc: "assets/images/grapesPhoto.jpeg",
+    imageSrc: "assets/images/grapeIcon.jpeg",
+    detailImageSrc: "assets/images/grapePhoto.jpeg",
+    isFavorite: false,
+  ),
+  Fruit(
+    name: "Cherry",
+    description:
+        "Cherries are one of the most popular fruit varieties. They're small fruits with a sweet and juicy taste. There are also two main types of cherry; sour cherries and sweet cherries.\n\nThese two varieties are fairly similar, but sour cherries have the slightly better nutritional profile. Sour cherries predominantly grow in Russia, Eastern Europe and Southern Asia.",
+    benefits: {
+      "Calories": "50 kcal",
+      "Sugar": "8.5g",
+      "Vitamin A": "26%",
+      "Vitamin C": "17%",
+      "Potassium": "5%",
+    },
+    type: Fruittype.other,
+    imageSrc: "assets/images/cherryIcon.jpeg",
+    detailImageSrc: "assets/images/cherryPhoto.jpeg",
+    isFavorite: false,
+  ),
+  Fruit(
+    name: "Avocado",
+    description:
+        "Avocados are an interesting fruit because they are very low in carbohydrate yet high in healthy fats. The fruit originated in South America, possibly in Mexico or Peru, and it was first referred to in English by the name of “crocodile pear”.\n\nOne of the best things about the avocado is just how adaptable it is. For instance, you may have heard of 'avocado toast', a trendy breakfast at the moment. Avocados are extremely nutrient-dense, and they are rich in fiber, protein, vitamins, and minerals - especially potassium.",
+    benefits: {
+      "Calories": "322 kcal",
+      "Fiber": "13.5g",
+      "Fat": "29.5g",
+      "Vitamin K": "53%",
+      "Potassium": "28%",
+    },
+    type: Fruittype.berry,
+    imageSrc: "assets/images/avocadoIcon.jpeg",
+    detailImageSrc: "assets/images/avocadoPhoto.jpeg",
+    isFavorite: false,
+  ),
+  Fruit(
+    name: "Grapefruit",
+    description:
+        "Grapefruit is a large citrus fruit believed to originate in Asia. Grapefruit has a slightly bitter, sour, but a little bit sweet taste.\n\nIt's rich in various nutrients, including antioxidants, minerals, and vitamins. These nutrients offer powerful health benefits and may help prevent disease.",
+    benefits: {
+      "Calories": "96 kcal",
+      "Sugar": "15.8g",
+      "Vitamin C": "120%",
+      "Vitamin A": "53%",
+      "Potassium": "9%",
+    },
+    type: Fruittype.citrus,
+    imageSrc: "assets/images/grapefruitIcon.png",
+    detailImageSrc: "assets/images/grapefruitPhoto.jpeg",
+    isFavorite: false,
+  ),
+  Fruit(
+    name: "Passion Fruit",
+    description:
+        "Passion fruit is another tropical fruit (technically a berry) that is native to the South American region, believed to originate in Brazil, Paraguay, and Argentina. Cultivation of the fruit now happens throughout the tropical and subtropical regions of the world.\n\nPassion fruit is one of the more unique fruits, and it is about the size of a golf ball. This sweet pulp is comparable to tomatoes; it is very juicy and contains lots of edible seeds.",
+    benefits: {
+      "Calories": "88 kcal",
+      "Sugar": "2.0g",
+      "Vitamin C": "45%",
+      "Vitamin A": "25%",
+      " Potassium": "10%",
+    },
+    type: Fruittype.tropical,
+    imageSrc: "assets/images/passionfruitIcon.jpeg",
+    detailImageSrc: "assets/images/passionfruitPhoto.jpeg",
+    isFavorite: false,
+  ),
+  Fruit(
+    name: "Pomegranate",
+    description:
+        "Pomegranates are unique in appearance and taste. They are believed to have originated in the India to Middle-East region, and they've long been cultivated in the Middle East and Mediterranean region. Nowadays, pomegranate cultivation is prevalent throughout dry and hot regions in the world.",
+    benefits: {
+      "Calories": "234 kcal",
+      "Sugar": "38.5g",
+      "Vitamin C": "58%",
+      "Potassium": "48%",
+      "Vitamin B6": "22%",
+    },
+    type: Fruittype.berry,
+    imageSrc: "assets/images/pomegranateIcon.jpeg",
+    detailImageSrc: "assets/images/pomegranatePhoto.jpeg",
     isFavorite: false,
   ),
 ];
-
+//Todo: Some categories I might include
+//-Drupes
 
 // "Calories": "107 kcal",
 // "Sugar": "24.4 g",

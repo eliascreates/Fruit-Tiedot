@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
-import 'package:fruit_tiedot/models/fruits.dart';
+import 'package:fruit_tiedot/models/fruit.dart';
 
 class HeartButtonIcon extends StatelessWidget {
   const HeartButtonIcon(

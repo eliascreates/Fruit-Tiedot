@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_tiedot/constants.dart';
-import 'package:fruit_tiedot/models/fruits.dart';
+import 'package:fruit_tiedot/models/fruit.dart';
 // import 'package:fruit_tiedot/screens/fruitdetails/fruit_detail_screen.dart';
 // import 'components/fruit_card.dart';
-import 'components/fruit_card_gridview.dart';
+// import 'components/fruit_card_gridview.dart';
+// import 'package:fruit_tiedot/models/fruit.dart';
 import 'components/home_searchbar.dart';
 import 'components/tabbar_categories.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -18,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final _searchController = TextEditingController();
   late TabController _tabController;
+  // final _fruits = fruits.sort();
 
   @override
   void initState() {
@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         child: Column(
           children: [
             const SizedBox(height: kDefaultPadding),
-            
+
             //Tabbar Header and Tabbar Body
             TabBarCategories(
               tabController: _tabController,

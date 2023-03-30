@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
-import 'package:fruit_tiedot/models/fruits.dart';
+import 'package:fruit_tiedot/models/fruit.dart';
 
 import '../../fruit_details/fruit_detail_screen.dart';
 import 'fruit_card.dart';

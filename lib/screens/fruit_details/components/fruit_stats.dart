@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/models/fruit.dart';
 
-
 class FruitStats extends StatelessWidget {
   const FruitStats({
     super.key,
@@ -26,13 +25,17 @@ class FruitStats extends StatelessWidget {
               ),
             ],
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular((20)),
-            child: Image.asset(
-              fruit.detailImageSrc,
-              width: 200,
-              height: 380,
-              fit: BoxFit.fill,
+          child: Hero(
+            transitionOnUserGestures: true,
+            tag: "fruitcard${fruit.imageSrc}",
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular((20)),
+              child: Image.asset(
+                fruit.detailImageSrc,
+                width: 200,
+                height: 380,
+                fit: BoxFit.fill,
+              ),
             ),
           ),
         ),
@@ -40,8 +43,22 @@ class FruitStats extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            for (var name in fruit.benefits.keys)
-              BenefitItem(title: name, amount: fruit.benefits[name] as String),
+            for (var index = 0; index < fruit.benefits.length; index++)
+              TweenAnimationBuilder(
+                tween: Tween<double>(begin: 0, end: 1),
+                duration: Duration(milliseconds: 400 * index),
+                builder: ((context, value, child) => Transform.scale(
+                      scale: (value / 0.80) > 1 ? 1 : value / 0.80,
+                      child: Opacity(
+                        opacity: value * value * value * value,
+                        child: child,
+                      ),
+                    )),
+                child: BenefitItem(
+                    title: fruit.benefits.keys.elementAt(index),
+                    amount: fruit.benefits[fruit.benefits.keys.elementAt(index)]
+                        as String),
+              ),
           ],
         )
       ],

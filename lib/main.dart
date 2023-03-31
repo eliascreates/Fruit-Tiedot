@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
-import 'package:fruit_tiedot/theme.dart';
+// import 'package:fruit_tiedot/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'screens/main/main_screen.dart';

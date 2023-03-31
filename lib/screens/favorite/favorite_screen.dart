@@ -12,25 +12,13 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size _size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     List<dynamic> favoriteFruits =
         fruits.where((fruit) => fruit.isFavorite).toList();
     return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   elevation: 0,
-      //   toolbarHeight: 40,
-      //   backgroundColor: Colors.transparent,
-      //   title: Text(
-      //     "Favorite Fruits",
-      //     style: GoogleFonts.quicksand(
-      //       fontSize: 20,
-      //       fontWeight: FontWeight.w400,
-      //     ),
-      //   ),
-      // ),
       body: SafeArea(
         child: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
               // elevation: 0,
@@ -43,6 +31,9 @@ class FavoriteScreen extends StatelessWidget {
                 centerTitle: true,
                 title: Container(
                   color: Colors.white,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: kDefaultPadding,
+                      vertical: kDefaultPadding * 0.1),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -94,7 +85,7 @@ class FavoriteScreen extends StatelessWidget {
                     delegate: SliverChildBuilderDelegate(
                       childCount: 1,
                       (context, index) => SizedBox(
-                          height: _size.height / 2,
+                          height: size.height / 2,
                           child: Center(
                               child: Text(
                             "No favorite fruits",

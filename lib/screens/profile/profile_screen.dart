@@ -6,22 +6,22 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size _size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
       child: Column(
         children: [
           Container(
             color: Colors.deepOrange,
-            height: _size.width,
-            width: _size.width,
+            height: size.width,
+            width: size.width,
             child: Stack(
               children: [
                 Positioned(
                   // left: 80,
                   // top: 80,
-                  left: (_size.width - 150) / 2,
-                  top: (_size.width - 150) / 2,
+                  left: (size.width - 150) / 2,
+                  top: (size.width - 150) / 2,
                   child: Column(
                     children: [
                       ClipOval(

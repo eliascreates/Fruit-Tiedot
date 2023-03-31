@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/models/fruit.dart';
 
-
 class FavoriteFruitItem extends StatelessWidget {
   const FavoriteFruitItem({
     super.key,
@@ -40,13 +39,16 @@ class FavoriteFruitItem extends StatelessWidget {
           children: [
             Row(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(kDefaultPadding / 2),
-                  child: Image.asset(
-                    fruit.imageSrc,
-                    width: 50,
-                    height: 50,
-                    fit: BoxFit.contain,
+                Hero(
+                  tag: "fruitcard${fruit.imageSrc}",
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(kDefaultPadding / 2),
+                    child: Image.asset(
+                      fruit.imageSrc,
+                      width: 50,
+                      height: 50,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
                 const SizedBox(width: kDefaultPadding),

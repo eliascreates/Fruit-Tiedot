@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/models/fruit.dart';
 
-import '../../components/heart_button.dart';
+import '../../shared/heart_button.dart';
 
 class FruitCard extends StatelessWidget {
   const FruitCard({
@@ -46,11 +46,15 @@ class FruitCard extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Image.asset(
-              fruit.imageSrc,
-              fit: BoxFit.contain,
-              // height: 100,
-              // width: 100,
+            child: Hero(
+              transitionOnUserGestures: true,
+              tag: "fruitcard${fruit.imageSrc}",
+              child: Image.asset(
+                fruit.imageSrc,
+                fit: BoxFit.contain,
+                // height: 100,
+                // width: 100,
+              ),
             ),
           ),
           Positioned(

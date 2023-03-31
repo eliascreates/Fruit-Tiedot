@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/models/fruit.dart';
 
-import '../components/heart_button.dart';
+import '../shared/heart_button.dart';
 import 'components/fruit_stats.dart';
 
 class FruitDetailScreen extends StatefulWidget {

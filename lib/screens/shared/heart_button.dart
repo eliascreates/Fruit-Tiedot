@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
-// import 'package:fruit_tiedot/constants.dart';
-import 'package:flutter_animated_icons/lottiefiles.dart';
-import 'package:flutter_animated_icons/useanimations.dart';
-import 'package:flutter_animated_icons/icons8.dart';
-import 'package:lottie/lottie.dart';
-
 import 'package:fruit_tiedot/models/fruit.dart';
+import 'package:like_button/like_button.dart';
 
 class HeartButtonIcon extends StatefulWidget {
-  const HeartButtonIcon(
-      {super.key,
-      // required this.toggleFavorite,
-      required this.fruit,
-      this.size = 24});
+  const HeartButtonIcon({super.key, required this.fruit, this.size = 30});
 
-  // final void Function(Fruit fruit) toggleFavorite;
   final Fruit fruit;
   final double size;
 
@@ -22,70 +12,23 @@ class HeartButtonIcon extends StatefulWidget {
   State<HeartButtonIcon> createState() => _HeartButtonIconState();
 }
 
-class _HeartButtonIconState extends State<HeartButtonIcon>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _favoriteController;
-
-  void _makeFavorite(Fruit fruit) {
-    setState(() {
-      if (_favoriteController.status == AnimationStatus.dismissed) {
-        _favoriteController.reset();
-        _favoriteController.animateTo(0.6);
-      } else {
-        _favoriteController.reverse();
-      }
-
-      fruit.toggleFavorite();
-    });
-  }
-
-  @override
-  void initState() {
-    _favoriteController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 500));
-
-    if (widget.fruit.isFavorite) {
-      _favoriteController.reset();
-      _favoriteController.animateTo(0.6);
-    }
-
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant HeartButtonIcon oldWidget) {
-    if (oldWidget.fruit.isFavorite) {
-      _favoriteController.reset();
-      _favoriteController.animateTo(0.6);
-    } else {
-      _favoriteController.reverse();
-    }
-
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  void dispose() {
-    _favoriteController.dispose();
-    super.dispose();
-  }
-
+class _HeartButtonIconState extends State<HeartButtonIcon> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(20),
-      radius: 20,
-      onTap: () => _makeFavorite(widget.fruit),
-      child: Opacity(
-        opacity: 0.8,
-        child: Lottie.asset(
-          Icons8.heart_color,
-          animate: true,
-          controller: _favoriteController,
-          height: widget.size + 5,
-          fit: BoxFit.cover,
-        ),
-      ),
+    return LikeButton(
+      isLiked: widget.fruit.isFavorite,
+      likeBuilder: (isLiked) {
+        return Icon(
+          (isLiked) ? Icons.favorite_rounded : Icons.favorite_outline_rounded,
+          color: (isLiked) ? Colors.redAccent : Colors.black54,
+          size: widget.size,
+        );
+      },
+      circleSize: widget.size,
+      onTap: (isLiked) async {
+        widget.fruit.toggleFavorite();
+        return widget.fruit.isFavorite;
+      },
     );
   }
 }

@@ -275,16 +275,9 @@ List<Fruit> fruits = [
     isFavorite: false,
   ),
 ];
+
 //Todo: Some categories I might include
 //-Drupes
-
-// "Calories": "107 kcal",
-// "Sugar": "24.4 g",
-// "Vitamin C": "76%",
-// "Vitamin A": "25%",
-// "Vitamin B6": "11%",
-// https://www.westfaliafruit.com/our-products/fresh-ripened/apples/
-// https://southafrica.co.za/fruit-farming-south-africa.html
 
 //*RDA
 //Recommended Dietary Allowances (RDAs) are the levels of intake of essential 
@@ -355,3 +348,12 @@ List<Fruit> fruits = [
 // "Vitamin C": "32%"
 // "Potassium": "2%"
 // "Calcium": "2%"
+
+//*Sources
+// https://www.westfaliafruit.com/our-products/fresh-ripened/apples/
+// https://southafrica.co.za/fruit-farming-south-africa.html
+//https://www.nutritionadvance.com/healthy-foods/types-of-fruit/
+//<a href="https://iconscout.com/icons/orange" target="_blank">Orange Icon</a> on <a href="https://iconscout.com">IconScout</a>
+//<a href="https://iconscout.com/icons/cherry" target="_blank">Cherry Icon</a> by <a href="https://iconscout.com/contributors/aomam">Aomam .</a> on <a href="https://iconscout.com">IconScout</a>
+// /<a href="https://iconscout.com/icons/orange" target="_blank">Orange Icon</a> on <a href="https://iconscout.com">IconScout</a>
+// <a href="https://iconscout.com/icons/orange" target="_blank">Orange Icon</a> by <a href="https://iconscout.com/contributors/iconscout" target="_blank">IconScout Store</a>

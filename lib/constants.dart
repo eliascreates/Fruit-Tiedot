@@ -16,10 +16,3 @@ class SvgIcon {
   static String notification = "assets/icons/notification.svg";
   static String profile = "assets/icons/profile.svg";
 }
-
-//*Sources
-//https://www.nutritionadvance.com/healthy-foods/types-of-fruit/
-//<a href="https://iconscout.com/icons/orange" target="_blank">Orange Icon</a> on <a href="https://iconscout.com">IconScout</a>
-//<a href="https://iconscout.com/icons/cherry" target="_blank">Cherry Icon</a> by <a href="https://iconscout.com/contributors/aomam">Aomam .</a> on <a href="https://iconscout.com">IconScout</a>
-// /<a href="https://iconscout.com/icons/orange" target="_blank">Orange Icon</a> on <a href="https://iconscout.com">IconScout</a>
-// <a href="https://iconscout.com/icons/orange" target="_blank">Orange Icon</a> by <a href="https://iconscout.com/contributors/iconscout" target="_blank">IconScout Store</a>

@@ -5,8 +5,17 @@ import 'package:google_fonts/google_fonts.dart';
 import '../fruit_details/fruit_detail_screen.dart';
 import 'components/favorite_fruit_item.dart';
 
-class FavoriteScreen extends StatelessWidget {
+class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({super.key});
+
+  @override
+  State<FavoriteScreen> createState() => _FavoriteScreenState();
+}
+
+class _FavoriteScreenState extends State<FavoriteScreen> {
+  void _refreshData() {
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +65,7 @@ class FavoriteScreen extends StatelessWidget {
             favoriteFruits.isNotEmpty
                 ? SliverList(
                     delegate: SliverChildBuilderDelegate(
+                      addRepaintBoundaries: true,
                       childCount: favoriteFruits.length,
                       (context, index) => Padding(
                         padding: EdgeInsets.only(
@@ -65,13 +75,20 @@ class FavoriteScreen extends StatelessWidget {
                             right: kDefaultPadding),
                         child: FavoriteFruitItem(
                           fruit: favoriteFruits[index],
-                          press: () {
-                            Navigator.of(context).push(
+                          press: () async {
+                            bool refresh = await Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => FruitDetailScreen(
-                                    fruit: favoriteFruits[index]),
+                                  fruit: favoriteFruits[index],
+                                ),
                               ),
                             );
+                            if (refresh) {
+                              Future.delayed(const Duration(milliseconds: 250),
+                                  () {
+                                _refreshData();
+                              });
+                            }
                           },
                         ),
                       ),

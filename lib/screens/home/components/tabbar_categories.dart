@@ -44,13 +44,14 @@ class TabBarCategoryView extends StatelessWidget {
     super.key,
     required this.tabController,
     required this.searchFruits,
-    required this.makeFavorite,
+    // required this.makeFavorite,
     required this.refreshData,
   });
 
   final TabController tabController;
   final List searchFruits;
-  final void Function(Fruit) makeFavorite;
+  // final void Function(Fruit) makeFavorite;
+  
   final void Function() refreshData;
 
   @override
@@ -59,35 +60,35 @@ class TabBarCategoryView extends StatelessWidget {
       controller: tabController,
       children: [
         FruitCardGridView(
-            toggleFavorite: makeFavorite,
+            // toggleFavorite: makeFavorite,
             refreshData: refreshData,
             fruitsFiltered: searchFruits),
         FruitCardGridView(
-            toggleFavorite: makeFavorite,
+            // toggleFavorite: makeFavorite,
             refreshData: refreshData,
             fruitsFiltered: searchFruits
                 .where((fruit) => fruit.type == Fruittype.citrus)
                 .toList()),
         FruitCardGridView(
-            toggleFavorite: makeFavorite,
+            // toggleFavorite: makeFavorite,
             refreshData: refreshData,
             fruitsFiltered: searchFruits
                 .where((fruit) => fruit.type == Fruittype.tropical)
                 .toList()),
         FruitCardGridView(
-            toggleFavorite: makeFavorite,
+            // toggleFavorite: makeFavorite,
             refreshData: refreshData,
             fruitsFiltered: searchFruits
                 .where((fruit) => fruit.type == Fruittype.berry)
                 .toList()),
         FruitCardGridView(
-            toggleFavorite: makeFavorite,
+            // toggleFavorite: makeFavorite,
             refreshData: refreshData,
             fruitsFiltered: searchFruits
                 .where((fruit) => fruit.type == Fruittype.melon)
                 .toList()),
         FruitCardGridView(
-            toggleFavorite: makeFavorite,
+            // toggleFavorite: makeFavorite,
             refreshData: refreshData,
             fruitsFiltered: searchFruits
                 .where((fruit) => fruit.type == Fruittype.other)

@@ -73,11 +73,7 @@ class _FruitDetailScreenState extends State<FruitDetailScreen> {
                           .textTheme
                           .titleLarge
                           ?.copyWith(fontWeight: FontWeight.bold)),
-                  HeartButtonIcon(
-                      fruit: widget.fruit,
-                      toggleFavorite: (fruit) =>
-                          setState(() => fruit.toggleFavorite()),
-                      size: 30),
+                  HeartButtonIcon(fruit: widget.fruit, size: 30),
                 ],
               ),
               const Divider(height: 20, color: kBgColorDark),

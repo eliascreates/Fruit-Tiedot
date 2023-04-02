@@ -9,18 +9,20 @@ class FruitCard extends StatelessWidget {
     super.key,
     required this.fruit,
     required this.onPress,
-    required this.toggleFavorite,
+    // required this.toggleFavorite,
   });
 
   final Fruit fruit;
   final VoidCallback onPress;
-  final void Function(Fruit) toggleFavorite;
+  // final void Function(Fruit) toggleFavorite;
+
+
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onDoubleTap: () {
-        toggleFavorite(fruit);
+        // toggleFavorite(fruit);
       },
       onTap: onPress,
       splashColor: kSecondaryColor,
@@ -60,8 +62,7 @@ class FruitCard extends StatelessWidget {
           Positioned(
             top: 10,
             right: 15,
-            child:
-                HeartButtonIcon(toggleFavorite: toggleFavorite, fruit: fruit),
+            child: HeartButtonIcon(fruit: fruit),
           ),
           Positioned(
             bottom: 35,

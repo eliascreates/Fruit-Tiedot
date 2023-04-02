@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_tiedot/constants.dart';
 import 'package:fruit_tiedot/models/fruit.dart';
-// import 'package:fruit_tiedot/screens/home/components/heart_button.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../fruit_details/fruit_detail_screen.dart';
 import 'components/favorite_fruit_item.dart';
 
@@ -21,11 +19,9 @@ class FavoriteScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
-              // elevation: 0,
               backgroundColor: kSecondaryColor,
               expandedHeight: 200,
               toolbarHeight: 100,
-              // floating: true,
               snap: false,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
@@ -85,12 +81,14 @@ class FavoriteScreen extends StatelessWidget {
                     delegate: SliverChildBuilderDelegate(
                       childCount: 1,
                       (context, index) => SizedBox(
-                          height: size.height / 2,
-                          child: Center(
-                              child: Text(
+                        height: size.height / 2,
+                        child: Center(
+                          child: Text(
                             "No favorite fruits",
                             style: Theme.of(context).textTheme.headlineMedium,
-                          ))),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
           ],

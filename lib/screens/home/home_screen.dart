@@ -32,10 +32,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     }
   }
 
-  void _makeFavorite(Fruit fruit) {
-    setState(() => fruit.toggleFavorite());
-  }
-
   void _resetTabBar(_) {
     setState(() {
       _searchController.clear();
@@ -89,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               child: TabBarCategoryView(
                 tabController: _tabController,
                 searchFruits: _searchFruits,
-                makeFavorite: _makeFavorite,
+                // makeFavorite: _makeFavorite,
                 refreshData: _refreshData,
               ),
             ),

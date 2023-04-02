@@ -37,7 +37,7 @@ List<Fruit> fruits = [
   Fruit(
     name: "Orange",
     description:
-        "Oranges are among the most common fruit in the world, and they provide a decent amount of vitamin C.",
+        "Oranges are among the most common fruit in the world, and they provide a decent amount of vitamin C.\n\nOranges are a refreshingly healthy treat packed full of goodness. Navel oranges are the most prolific variety available, but because they do not contain seeds, they require grafting for the creation of new trees.\n\nWhile one orange tree can bear up to 60,000 flowers, only 1% of these turn into fruit. Orange is one of the world's favourite flavours. Contrary to popular belief, it does not get its name from its colour, but rather from the Tamil word for 'fragrant'.",
     benefits: {
       "Calories": "86.5 kcal",
       "Sugar": "17.2g",
@@ -52,7 +52,8 @@ List<Fruit> fruits = [
   ),
   Fruit(
     name: "Apple",
-    description: "Apple is a fruit",
+    description:
+        "This popular fruit cultivated worldwide originally comes from Central Asia. Today, it is a staple in many meals, from healthy breakfasts to desserts. It is available in more than 8,000 varieties and are one of the most widely grown fruits in the world.\nIt is a deciduous fruit, but once apples are ready for picking, new buds have already started to form.\n\nApples are rich in antioxidants and dietary fibre. Apples are notable for their impressive list of phyto-nutrients. Studies suggest that its components are essential for optimal growth, development, and overall wellness.\nThey are believed to improve neurological health, reduce the risk of stroke, lower cholesterol levels, reduce the risk of diabetes and even prevent dementia.",
     benefits: {
       "Calories": "104 kcal",
       "Sugar": "21.8g",
@@ -62,12 +63,13 @@ List<Fruit> fruits = [
     },
     type: Fruittype.other,
     imageSrc: "assets/images/appleIcon.jpeg",
-    detailImageSrc: "assets/images/applePhoto.png",
+    detailImageSrc: "assets/images/applePhoto.jpeg",
     isFavorite: false,
   ),
   Fruit(
     name: "Lime",
-    description: "Lime is a fruit",
+    description:
+        "Limes are a hybrid citrus fruit, and are thought to have originally been grown in Indonesia or southeast Asia. There are many varieties of limes, including Key limes, Persian limes, sweet limes and desert limes. Like lemons, they were also used as a deterrent for scurvy on board ships on lengthy journeys.\n\nLime extract is commonly used in essential oils, cleaning products, and perfumes. Lime is also a popular ingredient in many cuisines - including Mexican, Thai and Vietnamese cuisine - due to its acidic sour juice and unique aroma",
     benefits: {
       "Calories": "31.3 kcal",
       "Sugar": "1.1g",
@@ -281,7 +283,8 @@ List<Fruit> fruits = [
 // "Vitamin C": "76%",
 // "Vitamin A": "25%",
 // "Vitamin B6": "11%",
-
+// https://www.westfaliafruit.com/our-products/fresh-ripened/apples/
+// https://southafrica.co.za/fruit-farming-south-africa.html
 
 //*RDA
 //Recommended Dietary Allowances (RDAs) are the levels of intake of essential 

@@ -17,27 +17,13 @@ Using the Fruit App is a great way to learn more about the fruits you eat and ta
 
 *****
 ## Screenshots
-<figure>
-<img src="./readmefiles/home_screen.png" alt="Home screen" width="30%" title="Cloud boy">
-<img src="./readmefiles/home_screen_tab_citrus.png" alt="Home screen" width="30%" title="Cloud boy">
-<img src="./readmefiles/fruit_detail_screen.png" alt="Home screen" width="30%" title="Cloud boy">
-<img src="./readmefiles/fruit_detail_screen_2.png" alt="Home screen" width="30%" title="Cloud boy">
-<img src="./readmefiles/favorite_screen.png" alt="Home screen" width="30%" title="Cloud boy">
-<img src="./readmefiles/profile_screen.png" alt="Home screen" width="30%" title="Cloud boy">
-</figure>
+\
+<img src="./readmefiles/home_screen.png" alt="Home screen" width="200px" title="Cloud boy">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./readmefiles/home_screen_tab_citrus.png" alt="Home screen" width="200px" title="Cloud boy">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./readmefiles/fruit_detail_screen.png" alt="Home screen" width="200px" title="Cloud boy">
+
+<img src="./readmefiles/fruit_detail_screen_2.png" alt="Home screen" width="200px" title="Cloud boy">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./readmefiles/favorite_screen.png" alt="Home screen" width="200px" title="Cloud boy">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./readmefiles/profile_screen.png" alt="Home screen" width="200px" title="Cloud boy">
 
 
-![MyAppGif](./readmefiles/myapp.gif)
-
-
-<style>
-img {
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  padding: 5px;
-}
-</style>
-
+<img src="./readmefiles/myapp.gif" width="650px">
 
 ## Getting Started
 

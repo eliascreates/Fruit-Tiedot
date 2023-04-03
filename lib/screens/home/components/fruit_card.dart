@@ -9,21 +9,15 @@ class FruitCard extends StatelessWidget {
     super.key,
     required this.fruit,
     required this.onPress,
-    // required this.toggleFavorite,
   });
 
   final Fruit fruit;
   final VoidCallback onPress;
-  // final void Function(Fruit) toggleFavorite;
-
-
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onDoubleTap: () {
-        // toggleFavorite(fruit);
-      },
+
       onTap: onPress,
       splashColor: kSecondaryColor,
       splashFactory: InkRipple.splashFactory,
